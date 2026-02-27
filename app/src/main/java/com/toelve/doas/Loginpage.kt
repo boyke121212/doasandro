@@ -8,7 +8,7 @@ import com.toelve.doas.helper.SecurePrefs
 import com.toelve.doas.helper.VolleyHelper
 import com.toelve.doas.helper.logbound
 import com.toelve.doas.helper.setupDoubleBackExit
-
+/*ini adalah remark*/
 
 class Loginpage : Boyke() {
     private lateinit var binding: ActivityLoginpageBinding
