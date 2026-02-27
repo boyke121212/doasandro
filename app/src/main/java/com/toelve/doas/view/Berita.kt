@@ -43,6 +43,10 @@ class Berita : Boyke(),
             startActivity(Intent(this@Berita, Home::class.java))
             finishAffinity()
         }
+        binding.btProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
         onBackPressedDispatcher.addCallback(this) {
             val intent = Intent(this@Berita, Home::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP

@@ -25,6 +25,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Doas">
         <activity
+            android:name=".view.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.DetailLog"
             android:exported="false" />
         <activity

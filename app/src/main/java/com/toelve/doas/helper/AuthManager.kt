@@ -10,9 +10,17 @@ import com.toelve.doas.BuildConfig
 import com.toelve.doas.Loginpage
 import java.io.File
 
+data class User(
+    val id: String,
+    val nama: String,
+    val pangkat: String,
+    val jabatan: String,
+    val subdit: String
+)
+
 class AuthManager(
     private val context: Context,
-    private val purnomo: String
+    private val purnomo: String = ""
 ) {
 
     private val prefs = SecurePrefs(context)
@@ -65,6 +73,17 @@ class AuthManager(
     /* =========================================================
      * PUBLIC API
      * ========================================================= */
+
+    fun getUser(): User? {
+        val accessToken = prefs.getAccessToken() ?: return null
+        return try {
+            // Ini asumsi data user ada di token atau disimpan terpisah. 
+            // Karena tidak ada model User, kita buat dummy dulu atau ambil dari prefs jika ada.
+            User("9291899", "danton", "AKBP", "Kasub", "Staff Pimpinan")
+        } catch (e: Exception) {
+            null
+        }
+    }
 
     fun checkAuth(
         params: Map<String, String>? = null,

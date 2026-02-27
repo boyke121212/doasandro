@@ -25,6 +25,10 @@ class Statuses : Boyke(),
         super.onCreate(savedInstanceState)
         binding = ActivityStatusesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.btProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
         binding.btAbsen.setOnClickListener {
             startActivity(Intent(this@Statuses, Home::class.java))
             finishAffinity()

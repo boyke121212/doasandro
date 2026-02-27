@@ -76,6 +76,12 @@ class SecurePrefs(private val context: Context) {
         }
     }
 
+    fun getAesKey(): String? {
+        return runBlocking {
+            context.dataStore.data.first()[AES_KEY]
+        }
+    }
+
     // ===============================
     // CLEAR
     // ===============================

@@ -44,6 +44,9 @@ class History : Boyke(),
         adapter = HistoryAdapter(listHistory)
         binding.rvHistory.layoutManager = LinearLayoutManager(this)
         binding.rvHistory.adapter = adapter
+        binding.btProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
         binding.swipe.setOnRefreshListener {
 

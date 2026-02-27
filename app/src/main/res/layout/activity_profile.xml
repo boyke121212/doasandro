@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    tools:context=".view.ProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/kembali"
+            app:title="Edit Profile" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Edit Profile Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Profile"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView style="@style/LabelProfile" android:text="Username" />
+                    <EditText android:id="@+id/etUsername" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="NIP" />
+                    <EditText android:id="@+id/etNIP" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="Role" />
+                    <EditText android:id="@+id/etRole" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="Nama Lengkap" />
+                    <EditText android:id="@+id/etNama" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="Pangkat" />
+                    <EditText android:id="@+id/etPangkat" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="Jabatan" />
+                    <EditText android:id="@+id/etJabatan" style="@style/EditProfile" />
+
+                    <TextView style="@style/LabelProfile" android:text="Subdit" />
+                    <Spinner
+                        android:id="@+id/spSubdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@android:drawable/btn_dropdown" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSimpanProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Simpan Profile"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Ubah Password Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ubah Password"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <TextView style="@style/LabelProfile" android:text="Password Lama" />
+                    <EditText android:id="@+id/etPassLama" style="@style/EditProfile" android:inputType="textPassword" />
+
+                    <TextView style="@style/LabelProfile" android:text="Password Baru" />
+                    <EditText android:id="@+id/etPassBaru" style="@style/EditProfile" android:inputType="textPassword" />
+
+                    <TextView style="@style/LabelProfile" android:text="Konfirmasi Password Baru" />
+                    <EditText android:id="@+id/etPassKonfirmasi" style="@style/EditProfile" android:inputType="textPassword" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUbahPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Ubah Password"
+                        android:backgroundTint="#FFB300"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

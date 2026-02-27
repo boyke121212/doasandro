@@ -12,6 +12,24 @@
         <item name="colorOnPrimary">#FFFFFF</item>
     </style>
 
+    <style name="LabelProfile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#475569</item>
+        <item name="android:layout_marginTop">12dp</item>
+    </style>
+
+    <style name="EditProfile">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_secondary</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#1E293B</item>
+    </style>
+
     <!-- INPUT PREMIUM -->
     <style name="InputLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundMode">outline</item>

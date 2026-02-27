@@ -33,6 +33,10 @@ class Doas : Boyke(),
         controller.hide(WindowInsetsCompat.Type.systemBars())
         controller.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        binding.btProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
         AuthManager(this, "api/getdoas").checkAuth(
             onLoading = { loading ->
                 if (loading) showLoading()

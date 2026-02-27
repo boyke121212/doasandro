@@ -6,21 +6,11 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
-import android.text.Html
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.viewpager.widget.ViewPager
-import com.toelve.doas.helper.AuthManager
 import com.toelve.doas.helper.BeritaPagerAdapter
-import com.toelve.doas.R
 import com.toelve.doas.boyi.Boyke
 import com.toelve.doas.databinding.ActivityHomeBinding
 import com.toelve.doas.helper.Auto.cleanTempPhotos
@@ -29,7 +19,6 @@ import com.toelve.doas.helper.cekabsen
 import com.toelve.doas.helper.dos
 import com.toelve.doas.helper.go
 import com.toelve.doas.helper.setupDoubleBackExit
-import java.io.File
 
 class Home : Boyke(),
 
@@ -73,6 +62,9 @@ class Home : Boyke(),
         binding.btInfo.setOnClickListener {
             startActivity(Intent(this@Home, Berita::class.java))
             finishAffinity()
+        }
+        binding.btProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
 
     }

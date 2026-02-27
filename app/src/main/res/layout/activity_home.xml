@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="6">
 
                 <LinearLayout
                     android:id="@+id/btAbsen"
@@ -177,6 +177,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Log"
+                        android:textSize="10sp"
+                        android:textColor="@color/text_muted"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="?attr/selectableItemBackground">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_person"
+                        app:tint="@color/text_muted"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
                         android:textSize="10sp"
                         android:textColor="@color/text_muted"/>
                 </LinearLayout>
