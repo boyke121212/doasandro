@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     android:background="@color/bg_app"
     tools:context=".view.DetailLog">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hero_gradient" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
