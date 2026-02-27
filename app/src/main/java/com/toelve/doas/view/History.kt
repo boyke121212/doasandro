@@ -106,17 +106,12 @@ class History : Boyke(),
                     rb.isChecked = true
 
                     selectedStatus = when (rb.id) {
-                        R.id.rHadir -> "HADIR"
+                        R.id.rHadir -> "DL"
                         R.id.rSemua -> ""
-                        R.id.rTerlambat -> "TERLAMBAT"
-                        R.id.rTK -> "TK"
-                        R.id.rLD -> "LD"
                         R.id.rCuti -> "CUTI"
                         R.id.rDIK -> "DIK"
                         R.id.rBKO -> "BKO"
-                        R.id.rDinas -> "DINAS"
                         R.id.rSakit -> "SAKIT"
-                        R.id.rIzin -> "IZIN"
                         else -> ""
                     }
 
