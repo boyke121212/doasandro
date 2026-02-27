@@ -3,20 +3,11 @@ package com.toelve.doas.view
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.text.Html
 import android.widget.Button
-import android.widget.EditText
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -63,7 +54,7 @@ class History : Boyke(),
 
             lastId = ""
             listHistory.clear()
-            adapter.notifyDataSetChanged()   // WAJIB
+            adapter.notifyDataSetChanged()
 
             loadHistory()
 
@@ -88,16 +79,11 @@ class History : Boyke(),
 
             val radios = listOf(
                 view.findViewById<RadioButton>(R.id.rSemua),
-                view.findViewById<RadioButton>(R.id.rHadir),
-                view.findViewById<RadioButton>(R.id.rTerlambat),
-                view.findViewById<RadioButton>(R.id.rTK),
-                view.findViewById<RadioButton>(R.id.rLD),
+                view.findViewById<RadioButton>(R.id.rDL),
                 view.findViewById<RadioButton>(R.id.rCuti),
-                view.findViewById<RadioButton>(R.id.rDIK),
-                view.findViewById<RadioButton>(R.id.rBKO),
-                view.findViewById<RadioButton>(R.id.rDinas),
                 view.findViewById<RadioButton>(R.id.rSakit),
-                view.findViewById<RadioButton>(R.id.rIzin)
+                view.findViewById<RadioButton>(R.id.rBKO),
+                view.findViewById<RadioButton>(R.id.rDIK)
             )
 
             radios.forEach { rb ->
@@ -106,15 +92,13 @@ class History : Boyke(),
                     rb.isChecked = true
 
                     selectedStatus = when (rb.id) {
-                        R.id.rHadir -> "DL"
-                        R.id.rSemua -> ""
+                        R.id.rDL -> "DL"
                         R.id.rCuti -> "CUTI"
-                        R.id.rDIK -> "DIK"
-                        R.id.rBKO -> "BKO"
                         R.id.rSakit -> "SAKIT"
-                        else -> ""
+                        R.id.rBKO -> "BKO"
+                        R.id.rDIK -> "DIK"
+                        else -> "" // rSemua
                     }
-
                 }
             }
 
@@ -228,8 +212,6 @@ class History : Boyke(),
                             decryptField(obj,"latitude",aesKey),
                             decryptField(obj,"longitude",aesKey),
                             decryptField(obj,"ketam",aesKey),
-                            decryptField(obj,"tipeizin",aesKey),
-                            decryptField(obj,"namapimpinan",aesKey),
                             decryptField(obj,"jabatan",aesKey),
                             decryptField(obj,"pangkat",aesKey),
                             decryptField(obj,"foto",aesKey),
@@ -240,7 +222,13 @@ class History : Boyke(),
                             decryptField(obj,"fotopulang2",aesKey),
                             decryptField(obj,"subdit",aesKey),
                             decryptField(obj,"tanggal",aesKey),
-                            decryptField(obj,"ketpul",aesKey)
+                            decryptField(obj,"ketpul",aesKey),
+                            decryptField(obj,"latpulang",aesKey),
+                            decryptField(obj,"lonpulang",aesKey),
+                            decryptField(obj,"nip",aesKey),
+                            decryptField(obj,"nama",aesKey),
+
+
 
                         )
                     )

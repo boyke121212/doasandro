@@ -36,24 +36,9 @@
                 android:text="Semua"/>
 
             <RadioButton
-                android:id="@+id/rHadir"
+                android:id="@+id/rDL"
                 style="@style/ChipRadio"
-                android:text="HADIR"/>
-
-            <RadioButton
-                android:id="@+id/rTerlambat"
-                style="@style/ChipRadio"
-                android:text="TERLAMBAT"/>
-
-            <RadioButton
-                android:id="@+id/rTK"
-                style="@style/ChipRadio"
-                android:text="TK"/>
-
-            <RadioButton
-                android:id="@+id/rLD"
-                style="@style/ChipRadio"
-                android:text="LD"/>
+                android:text="DL"/>
 
             <RadioButton
                 android:id="@+id/rCuti"
@@ -61,9 +46,9 @@
                 android:text="CUTI"/>
 
             <RadioButton
-                android:id="@+id/rDIK"
+                android:id="@+id/rSakit"
                 style="@style/ChipRadio"
-                android:text="DIK"/>
+                android:text="SAKIT"/>
 
             <RadioButton
                 android:id="@+id/rBKO"
@@ -71,19 +56,9 @@
                 android:text="BKO"/>
 
             <RadioButton
-                android:id="@+id/rDinas"
+                android:id="@+id/rDIK"
                 style="@style/ChipRadio"
-                android:text="DINAS"/>
-
-            <RadioButton
-                android:id="@+id/rSakit"
-                style="@style/ChipRadio"
-                android:text="SAKIT"/>
-
-            <RadioButton
-                android:id="@+id/rIzin"
-                style="@style/ChipRadio"
-                android:text="IZIN"/>
+                android:text="DIK"/>
 
         </GridLayout>
 

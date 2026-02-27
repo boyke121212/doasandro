@@ -298,18 +298,14 @@ object Auto {
     ) {
 
         resetView(binding)
-
         val tanggal = obj.dec("tanggal", aesKey)
-        val selesai = obj.dec("selesai", aesKey)
+        val nip = obj.dec("nip", aesKey)
         val masuk = obj.dec("masuk", aesKey)
         val pulang = obj.dec("pulang", aesKey)
         val ket = obj.dec("keterangan", aesKey).uppercase()
         val lat = obj.dec("latitude", aesKey)
         val lng = obj.dec("longitude", aesKey)
         val ketam = obj.dec("ketam", aesKey)
-        val tipeizin = obj.dec("tipeizin", aesKey)
-        val namaPimpinan = obj.dec("namapimpinan", aesKey)
-        val jabatan = obj.dec("jabatan", aesKey)
         val pangkat = obj.dec("pangkat", aesKey)
         val foto = obj.dec("foto", aesKey)
         val foto2 = obj.dec("foto2", aesKey)
@@ -320,7 +316,9 @@ object Auto {
         val statuspulang = obj.dec("statuspulang", aesKey)
         val ketpul = obj.dec("ketpul", aesKey)
         val subdit = obj.dec("subdit", aesKey)
+        val jabatan = obj.dec("jabatan", aesKey)
         val statusmasuk = obj.dec("statusmasuk", aesKey)
+        val nama = obj.dec("nama", aesKey)
 
         binding.cardStatusHariIni.visibility = View.VISIBLE
         binding.tvTanggal.text = tanggal
@@ -370,12 +368,12 @@ object Auto {
 
         if (subdit.isNotEmpty()) {
             binding.tvSubdit.visibility = View.VISIBLE
-            binding.tvSubdit.text = "($subdit)"
+            binding.tvSubdit.text = "Nama : "+nama+"\nSubdit : "+subdit+"\nNIP : "+nip +"\n"+ "Jabatan : "+jabatan  +"\nPangkat : "+ pangkat
         }
 
 
         // kalau sudah pulang
-        if (pulang.isNotBlank()) {
+        if (pulang.isNotEmpty()) {
             binding.tvPulang.text = pulang + " (" + statuspulang + ")"
             if (fotopulang.isNotEmpty()) {
                 binding.imgFotoPulang.visibility = View.VISIBLE
@@ -418,6 +416,9 @@ object Auto {
             binding.imgFotoPulang.visibility = View.GONE
             binding.tvLabelR.visibility = View.GONE
             binding.btnPulang.visibility = View.VISIBLE
+            binding.tvPulang.visibility = View.VISIBLE
+            binding.tvPulang.text = "Belum Absen"
+
         }
         if (ket.equals("DL", true)) {
             binding.tvKet.text = "Dinas Luar"

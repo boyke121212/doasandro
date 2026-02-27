@@ -9,8 +9,6 @@ data class HistoryModel(
     val latitude: String,
     val longitude: String,
     val ketam: String,
-    val tipeizin: String,
-    val namaPimpinan: String,
     val jabatan: String,
     val pangkat: String,
     val foto: String,
@@ -21,5 +19,10 @@ data class HistoryModel(
     val fotopulang2: String,
     val subdit: String,
     val tanggal: String,
-    val ketpul: String
+    val ketpul: String,
+    val latpulang: String,
+    val lonpulang: String,
+    val nip: String,
+    val nama: String,
+
 )
