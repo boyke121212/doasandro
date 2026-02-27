@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F6FA">
+
+    <!-- CARD STATUS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filter Status"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#111827"
+            android:layout_marginBottom="12dp"/>
+
+        <GridLayout
+            android:id="@+id/gridStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2">
+
+            <!-- CHIP STYLE -->
+            <RadioButton
+                android:id="@+id/rSemua"
+                style="@style/ChipRadio"
+                android:text="Semua"/>
+
+            <RadioButton
+                android:id="@+id/rHadir"
+                style="@style/ChipRadio"
+                android:text="HADIR"/>
+
+            <RadioButton
+                android:id="@+id/rTerlambat"
+                style="@style/ChipRadio"
+                android:text="TERLAMBAT"/>
+
+            <RadioButton
+                android:id="@+id/rTK"
+                style="@style/ChipRadio"
+                android:text="TK"/>
+
+            <RadioButton
+                android:id="@+id/rLD"
+                style="@style/ChipRadio"
+                android:text="LD"/>
+
+            <RadioButton
+                android:id="@+id/rCuti"
+                style="@style/ChipRadio"
+                android:text="CUTI"/>
+
+            <RadioButton
+                android:id="@+id/rDIK"
+                style="@style/ChipRadio"
+                android:text="DIK"/>
+
+            <RadioButton
+                android:id="@+id/rBKO"
+                style="@style/ChipRadio"
+                android:text="BKO"/>
+
+            <RadioButton
+                android:id="@+id/rDinas"
+                style="@style/ChipRadio"
+                android:text="DINAS"/>
+
+            <RadioButton
+                android:id="@+id/rSakit"
+                style="@style/ChipRadio"
+                android:text="SAKIT"/>
+
+            <RadioButton
+                android:id="@+id/rIzin"
+                style="@style/ChipRadio"
+                android:text="IZIN"/>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+    <!-- CARD TANGGAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_card"
+        android:padding="16dp"
+        android:layout_marginBottom="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filter Tanggal"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#111827"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/btTanggal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="Pilih Tanggal"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_editor_dinas"
+            android:drawableEnd="@drawable/ic_calendar"/>
+    </LinearLayout>
+
+
+    <!-- BUTTON TERAPKAN -->
+    <Button
+        android:id="@+id/btTerapkan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Terapkan Filter"
+        android:textStyle="bold"/>
+
+</LinearLayout>

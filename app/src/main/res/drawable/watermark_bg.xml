@@ -1,0 +1,5 @@
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/logodit"
+    android:gravity="center"
+    android:alpha="0.1"
+    android:tileMode="disabled"/>

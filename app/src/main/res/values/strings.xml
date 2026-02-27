@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Doas</string>
+    <string name="rule">Jika ini perangkat baru Silahkan Login.Jika anda sudah pernah login di perangkat ini silahkan tutp aplikasi, cari posisi sinyal yang lebih baik dan buka kembali.Jika Masih Tidak Bisa Silahkan Hubungi Admin. jika anda belum pernah login silahkan login.Jika ini perangkat baru dan anda pernah login di perangkat lain Silahkan Hubungi Admin</string>
+    <string name="disclaimerview">Foto diambil untuk keperluan audit internal, bukan untuk biometrik atau pencocokan wajah.</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- WARNA UTAMA -->
+    <solid android:color="#3657BA" />
+
+    <!-- SUDUT ROUNDED -->
+    <corners android:radius="12dp" />
+
+    <!-- ELEVATION FEEL (SUBTLE) -->
+    <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp" />
+
+</shape>
