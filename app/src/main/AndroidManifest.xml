@@ -41,6 +41,9 @@
             android:name=".view.Berita"
             android:exported="false" />
         <activity
+            android:name=".view.BeritaDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.History"
             android:exported="false" />
         <activity

@@ -1,25 +1,21 @@
 package com.toelve.doas.helper
 
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.request.ImageRequest
 import com.toelve.doas.BuildConfig
 import com.toelve.doas.R
 import com.toelve.doas.helper.Auto.downloadPdfVolley
-import com.toelve.doas.helper.Auto.downloadPdfWithAuth
 import com.toelve.doas.soasa.DeviceSecurityHelper
-import com.toelve.doas.view.Home
-import com.toelve.doas.view.PdfViewerActivity
+import com.toelve.doas.view.BeritaDetailActivity
 
 class BeritaAdapter(
     private val list: ArrayList<BeritaModel>
@@ -29,6 +25,7 @@ class BeritaAdapter(
         val tvJudul: TextView = v.findViewById(R.id.tvNama)
         val tvIsi: TextView = v.findViewById(R.id.tvNo)
         val ivFoto: ImageView = v.findViewById(R.id.ivFoto)
+        val pembungkus : LinearLayout = v.findViewById(R.id.pembungkus)
         val btDownload: Button = v.findViewById(R.id.btDownload)
     }
 
@@ -50,7 +47,6 @@ class BeritaAdapter(
 
         val token = SecurePrefs(context).getAccessToken()
 
-
         val url = BuildConfig.BASE_URL + "api/media/berita/" + d.foto
 
         holder.ivFoto.load(url) {
@@ -63,6 +59,18 @@ class BeritaAdapter(
             addHeader("X-App-Signature", DeviceSecurityHelper.getAppSignatureHash(context))
         }
 
+        // Click pembungkus untuk buka detail
+        holder.pembungkus.setOnClickListener {
+            val intent = Intent(context, BeritaDetailActivity::class.java).apply {
+                putExtra("id", d.id)
+                putExtra("judul", d.judul)
+                putExtra("isi", d.isi)
+                putExtra("tanggal", d.tanggal)
+                putExtra("foto", d.foto)
+                putExtra("pdf", d.pdf)
+            }
+            context.startActivity(intent)
+        }
 
         if (d.pdf.isEmpty()) {
             holder.btDownload.visibility = View.GONE
@@ -71,19 +79,15 @@ class BeritaAdapter(
         }
 
         holder.btDownload.setOnClickListener {
-
-            val context = holder.itemView.context
-            val token = SecurePrefs.get(context).getAccessToken() ?: return@setOnClickListener
-
-            val url = BuildConfig.BASE_URL + "api/media/pdf/" + d.pdf
+            val tokenDownload = SecurePrefs.get(context).getAccessToken() ?: return@setOnClickListener
+            val urlPdf = BuildConfig.BASE_URL + "api/media/pdf/" + d.pdf
 
             if (!Auto.isInternetAvailable(context)) {
                 Toast.makeText(context, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            downloadPdfVolley(context, url, d.pdf, token)
+            downloadPdfVolley(context, urlPdf, d.pdf, tokenDownload)
         }
-
     }
 }

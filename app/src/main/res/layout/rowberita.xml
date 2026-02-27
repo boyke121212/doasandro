@@ -11,6 +11,7 @@
     app:strokeColor="#E5E7EB">
 
     <LinearLayout
+        android:id="@+id/pembungkus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
