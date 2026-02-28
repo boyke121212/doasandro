@@ -311,6 +311,88 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="32dp"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvDashboardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dashboard Anggaran"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#0F172A"/>
+
+                    <TextView
+                        android:id="@+id/tvTahunAktif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Tahun Aktif: -"
+                        android:textColor="#475569"/>
+
+                    <TextView
+                        android:id="@+id/tvBulanAwal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bulan Awal: -"
+                        android:textColor="#475569"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="Summary Subdit"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSummarySubdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="Grafik Subdit"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A"/>
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chartSubdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="User Terakhir"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvUserTerakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

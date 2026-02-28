@@ -19,7 +19,10 @@ volley = "1.2.1"
 securityCrypto = "1.1.0"
 camerax = "1.5.3"
 biometric = "1.1.0"
-
+mpAndroidChart = "v3.1.0"
+retrofit = "2.11.0"
+okhttp = "4.12.0"
+gson = "2.13.2"
 
 [libraries]
 androidx-biometric = {module = "androidx.biometric:biometric", version.ref = "biometric"}
@@ -43,6 +46,11 @@ securityCrypto = { module = "androidx.security:security-crypto", version.ref = "
 camerax-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
 camerax-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
 camerax-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
+mpAndroidChart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpAndroidChart" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

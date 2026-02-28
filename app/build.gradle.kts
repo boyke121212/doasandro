@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     id("org.jetbrains.kotlin.plugin.parcelize")
-
 }
 
 android {
@@ -25,7 +24,6 @@ android {
             "refresh",
             "\"api/refresh-token\""
         )
-
         buildConfigField(
             "String",
             "CHECKING",
@@ -36,20 +34,17 @@ android {
             "DATAABSEN",
             "\"api/dataabsen\""
         )
-
     }
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -61,8 +56,6 @@ kotlin {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
-
-
 
 dependencies {
     implementation(libs.androidx.core.ktx)
@@ -84,6 +77,11 @@ dependencies {
     implementation(libs.subsampling.scale.image.view)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.exifinterface.v137)
+    implementation(libs.mpAndroidChart)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

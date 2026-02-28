@@ -74,16 +74,6 @@ class AuthManager(
      * PUBLIC API
      * ========================================================= */
 
-    fun getUser(): User? {
-        val accessToken = prefs.getAccessToken() ?: return null
-        return try {
-            // Ini asumsi data user ada di token atau disimpan terpisah. 
-            // Karena tidak ada model User, kita buat dummy dulu atau ambil dari prefs jika ada.
-            User("9291899", "danton", "AKBP", "Kasub", "Staff Pimpinan")
-        } catch (e: Exception) {
-            null
-        }
-    }
 
     fun checkAuth(
         params: Map<String, String>? = null,
@@ -98,6 +88,7 @@ class AuthManager(
 
         if (accessToken.isNullOrEmpty() || refreshToken.isNullOrEmpty()) {
             onLogout("Sesi tidak valid")
+            forceLogout()
             return
         }
 
