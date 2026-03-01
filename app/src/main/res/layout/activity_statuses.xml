@@ -48,7 +48,6 @@
                     android:layout_margin="24dp"
                     android:orientation="vertical">
 
-              ]
                     <TextView
                         android:id="@+id/tvJudul"
                         android:layout_width="wrap_content"
@@ -495,44 +494,105 @@
                         app:icon="@drawable/ic_fingerprint"
                         app:iconGravity="textStart" />
 
+                    <!-- LOKASI SECTION -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginTop="20dp">
-                        <TextView
-                            android:id="@+id/tvLat"
+                        android:layout_marginTop="24dp"
+                        android:padding="12dp"
+                        android:background="#F8FAFC">
+
+                        <!-- LOKASI MASUK -->
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Lokasi Masuk: -106.32321, 6.35454"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted" />
-                        <TextView
-                            android:id="@+id/tvAlamat"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@android:drawable/ic_menu_mylocation"
+                                app:tint="@color/brand_primary"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginStart="8dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lokasi Absen Masuk"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"/>
+                                <TextView
+                                    android:id="@+id/tvLat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Koordinat: -"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted" />
+                                <TextView
+                                    android:id="@+id/tvAlamat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mencari alamat masuk..."
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginTop="2dp"
+                                    android:visibility="visible"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/state_divider"
+                            android:layout_marginBottom="12dp"/>
+
+                        <!-- LOKASI PULANG -->
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mencari alamat..."
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="4dp"
-                            android:visibility="gone"/>
-                        <TextView
-                            android:id="@+id/tvLatPulang"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Lokasi Pulang: -"
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="8dp"/>
-                        <TextView
-                            android:id="@+id/tvAlamatPulang"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Mencari alamat..."
-                            android:textSize="11sp"
-                            android:textColor="@color/text_muted"
-                            android:layout_marginTop="4dp"
-                            android:visibility="gone"/>
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@android:drawable/ic_menu_mylocation"
+                                app:tint="#F59E0B"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginStart="8dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Lokasi Absen Pulang"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="11sp"
+                                    android:textStyle="bold"/>
+                                <TextView
+                                    android:id="@+id/tvLatPulang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Koordinat: -"
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted" />
+                                <TextView
+                                    android:id="@+id/tvAlamatPulang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mencari alamat pulang..."
+                                    android:textSize="10sp"
+                                    android:textColor="@color/text_muted"
+                                    android:layout_marginTop="2dp"
+                                    android:visibility="visible"/>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>

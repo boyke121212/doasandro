@@ -103,12 +103,9 @@ class AbsenCuti : Boyke() {
         val listJenis = arrayListOf(
             "Pilih Jenis Cuti",
             "Cuti Tahunan",
-            "Cuti Sakit",
             "Cuti Istimewa",
             "Cuti Ibadah Keagamaan",
-            "Cuti Melahirkan",
-            "Cuti diluar tanggungan negara",
-            "Cuti karena alasan penting"
+            "Cuti Melahirkan"
         )
 
         val adapter = ArrayAdapter(
@@ -206,7 +203,7 @@ class AbsenCuti : Boyke() {
         }
 
         val params = mutableMapOf(
-            "menu" to "Cuti",
+            "menu" to "CUTI",
             "ketam" to alasan,
             "latitude" to absensiManager.lat.toString(),
             "longitude" to absensiManager.lon.toString()

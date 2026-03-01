@@ -16,25 +16,54 @@ object ImageProcessor {
         lat: Double?,
         lon: Double?,
         quality: Int = 50
-    ) {
+    ): File {
 
-        val original = BitmapFactory.decodeFile(file.absolutePath) ?: return
+        val original = BitmapFactory.decodeFile(file.absolutePath)
+            ?: return file
 
-        val rotated = fixOrientation(original, file, isFrontCamera)
+        val rotated = fixOrientation(
+            original,
+            file,
+            isFrontCamera
+        )
 
         // resize ke 720
         val resized = resizeBitmap(rotated, 720)
 
-        val watermarked = addWatermark(resized, alamat, lat, lon)
+        val watermarked = addWatermark(
+            resized,
+            alamat,
+            lat,
+            lon
+        )
 
-        FileOutputStream(file).use {
-            watermarked.compress(Bitmap.CompressFormat.WEBP, quality, it)
+        // ===== FILE BARU WEBP =====
+        val webpFile = File(
+            file.parent,
+            file.nameWithoutExtension + ".webp"
+        )
+
+        FileOutputStream(webpFile).use {
+            watermarked.compress(
+                Bitmap.CompressFormat.WEBP,
+                quality,
+                it
+            )
         }
 
+        // ===== HAPUS FILE LAMA =====
+        if (file.exists() && file.absolutePath != webpFile.absolutePath) {
+            file.delete()
+        }
+
+        // ===== RECYCLE BITMAP =====
         original.recycle()
         rotated.recycle()
         resized.recycle()
         watermarked.recycle()
+
+        // RETURN FILE BARU
+        return webpFile
     }
 
 

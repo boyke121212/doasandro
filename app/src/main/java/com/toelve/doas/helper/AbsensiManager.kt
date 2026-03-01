@@ -124,6 +124,7 @@ class AbsensiManager(
             return
         }
 
+        // ===== FILE AWAL DARI CAMERA =====
         val file = createImageFile()
         val options = ImageCapture.OutputFileOptions.Builder(file).build()
 
@@ -132,19 +133,31 @@ class AbsensiManager(
             cameraExecutor,
             object : ImageCapture.OnImageSavedCallback {
 
-                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                override fun onImageSaved(
+                    output: ImageCapture.OutputFileResults
+                ) {
 
-                    ImageProcessor.processAndSave(
-                        file = file,
-                        isFrontCamera = (lensFacing == CameraSelector.LENS_FACING_FRONT),
-                        alamat = alamat,
-                        lat = lat,
-                        lon = lon
-                    )
+                    // ===== PROSES + CONVERT WEBP =====
+                    val processedFile =
+                        ImageProcessor.processAndSave(
+                            file = file,
+                            isFrontCamera =
+                                (lensFacing == CameraSelector.LENS_FACING_FRONT),
+                            alamat = alamat,
+                            lat = lat,
+                            lon = lon
+                        )
 
                     activity.runOnUiThread {
-                        capturedFiles.add(file)
-                        onPreview(Uri.fromFile(file), capturedFiles.size)
+
+                        // ===== SIMPAN FILE FINAL =====
+                        capturedFiles.add(processedFile)
+
+                        // ===== PREVIEW =====
+                        onPreview(
+                            Uri.fromFile(processedFile),
+                            capturedFiles.size
+                        )
                     }
                 }
 
@@ -156,7 +169,6 @@ class AbsensiManager(
             }
         )
     }
-
     /* ================= LOCATION ================= */
 
     @SuppressLint("MissingPermission")

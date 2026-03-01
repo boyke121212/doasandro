@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.toelve.doas.R
 import com.toelve.doas.databinding.ActivityDetailLogBinding
+import com.toelve.doas.helper.Auto
 import com.toelve.doas.helper.Auto.loadingFoto
 
 class DetailLog : AppCompatActivity() {
@@ -59,10 +60,20 @@ class DetailLog : AppCompatActivity() {
             binding.tvPulang.text = "Belum Absen"
         }
 
-        // Lokasi
-        binding.tvLat.text = "Lokasi Masuk: $lat, $lng"
-        if (latpulang.isNotEmpty()) {
-            binding.tvLatPulang.text = "Lokasi Pulang: $latpulang, $lonpulang"
+        // Lokasi Masuk
+        if (lat.isNotEmpty() && lng.isNotEmpty()) {
+            binding.tvLat.text = "Koordinat: $lat, $lng"
+            Auto.getAddressFromLatLng(this, lat.toDouble(), lng.toDouble()) { alamat ->
+                binding.tvAlamat.text = alamat
+            }
+        }
+
+        // Lokasi Pulang
+        if (latpulang.isNotEmpty() && lonpulang.isNotEmpty()) {
+            binding.tvLatPulang.text = "Koordinat: $latpulang, $lonpulang"
+            Auto.getAddressFromLatLng(this, latpulang.toDouble(), lonpulang.toDouble()) { alamat ->
+                binding.tvAlamatPulang.text = alamat
+            }
         }
 
         // Foto Masuk

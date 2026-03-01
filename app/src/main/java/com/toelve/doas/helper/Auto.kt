@@ -562,7 +562,7 @@ object Auto {
         return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 
-    private fun getAddressFromLatLng(
+    fun getAddressFromLatLng(
         context: Context,
         lat: Double,
         lon: Double,
@@ -605,4 +605,3 @@ object Auto {
     }
 
 }
-

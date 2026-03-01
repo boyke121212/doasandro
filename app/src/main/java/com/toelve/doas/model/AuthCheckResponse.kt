@@ -2,11 +2,6 @@ package com.toelve.doas.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AuthCheckResponse(
-    @SerializedName("status") val status: Any?,
-    @SerializedName("dashboard") val dashboard: DashboardData?
-)
-
 data class DashboardData(
     @SerializedName("tahunAktif") val tahunAktif: Int?,
     @SerializedName("bulanAwal") val bulanAwal: Int?,
