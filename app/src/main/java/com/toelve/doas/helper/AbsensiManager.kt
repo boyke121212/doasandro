@@ -375,3 +375,4 @@ class AbsensiManager(
         Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
     }
 }
+

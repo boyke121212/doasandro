@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.viewpager.widget.ViewPager
 import com.google.gson.Gson
 import com.toelve.doas.R
@@ -220,5 +221,27 @@ fun Home.startAbsen(absen: String, target: Class<*>, ketam: String) {
         finishAffinity()
     } else {
         Toast.makeText(this, absen, Toast.LENGTH_SHORT).show()
+    }
+}
+
+fun Home.setupDoubleBackExit() {
+
+    var lastBackPressed = 0L
+
+    onBackPressedDispatcher.addCallback(
+        this@setupDoubleBackExit
+    ) {
+        val now = System.currentTimeMillis()
+
+        if (now - lastBackPressed < 2000) {
+            finishAffinity()
+        } else {
+            lastBackPressed = now
+            Toast.makeText(
+                this@setupDoubleBackExit,
+                "Tekan sekali lagi untuk Keluar",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

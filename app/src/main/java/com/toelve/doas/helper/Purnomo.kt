@@ -145,27 +145,7 @@ fun Loginpage.setupDoubleBackExit() {
     }
 }
 
-fun Home.setupDoubleBackExit() {
 
-    var lastBackPressed = 0L
-
-    onBackPressedDispatcher.addCallback(
-        this@setupDoubleBackExit
-    ) {
-        val now = System.currentTimeMillis()
-
-        if (now - lastBackPressed < 2000) {
-            finishAffinity()
-        } else {
-            lastBackPressed = now
-            Toast.makeText(
-                this@setupDoubleBackExit,
-                "Tekan sekali lagi untuk Keluar",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-}
 
 
 
