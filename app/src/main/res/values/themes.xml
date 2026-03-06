@@ -2,13 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Doas" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#2563EB</item>
+        <item name="colorSecondary">#E8F0FE</item>
     </style>
 
     <style name="Theme.Doas" parent="Base.Theme.Doas" />
     <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">#2962FF</item>
-        <item name="colorPrimaryVariant">#0039CB</item>
+        <item name="colorPrimary">#2563EB</item>
+        <item name="colorPrimaryVariant">#1E40AF</item>
         <item name="colorOnPrimary">#FFFFFF</item>
     </style>
 
@@ -33,7 +34,7 @@
     <!-- INPUT PREMIUM -->
     <style name="InputLogin" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundMode">outline</item>
-        <item name="boxStrokeColor">#2962FF</item>
+        <item name="boxStrokeColor">#2563EB</item>
         <item name="boxStrokeWidth">1.5dp</item>
         <item name="boxStrokeWidthFocused">2.5dp</item>
         <item name="boxBackgroundColor">#FFFFFF</item>
@@ -54,7 +55,7 @@
     </style>
 
     <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorAccent">#0D47A1</item>
+        <item name="colorAccent">#2563EB</item>
         <item name="android:textColorPrimary">#000000</item>
     </style>
 
