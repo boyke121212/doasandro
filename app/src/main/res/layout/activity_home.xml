@@ -58,6 +58,8 @@
                         android:textColor="@color/white"
                         android:textSize="22sp"
                         android:textStyle="bold"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         app:fontFamily="sans-serif-black"/>
 
                     <TextView
@@ -67,6 +69,8 @@
                         android:text="DITTIPIDTER BARESKRIM POLRI"
                         android:textColor="#E5E7EB"
                         android:textSize="14sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:letterSpacing="0.1"/>
                 </LinearLayout>
             </FrameLayout>

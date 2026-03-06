@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import coil.load
-import coil.request.ImageRequest
 import com.toelve.doas.BuildConfig
 import com.toelve.doas.R
 import com.toelve.doas.soasa.DeviceSecurityHelper
@@ -16,9 +15,17 @@ import com.toelve.doas.view.BeritaItem
 
 class BeritaPagerAdapter(
     private val context: Context,
-    private val items: List<BeritaItem>,
+    items: List<BeritaItem>,
     private val listener: OnBeritaChangeListener
 ) : PagerAdapter() {
+
+    // 🛠️ BERSIHKAN SEMUA DATA DI AWAL (SEKALI PROSES)
+    val items: List<BeritaItem> = items.map { item ->
+        item.copy(
+            judul = RenderHtml.htmlPreviewClean(item.judul, 50), // Judul max 50 kata/karakter sesuai fungsi
+            isi = RenderHtml.htmlPreviewClean(item.isi, 20)      // Isi max 20 kata
+        )
+    }
 
     interface OnBeritaChangeListener {
         fun onBeritaChanged(berita: BeritaItem)
@@ -35,7 +42,7 @@ class BeritaPagerAdapter(
         val img = view.findViewById<ImageView>(R.id.imgBanner)
         val berita = items[position]
 
-        // LOAD IMAGE (kode kamu tetap)
+        // LOAD IMAGE
         val token = SecurePrefs(context).getAccessToken()
         val url = BuildConfig.BASE_URL + "api/media/berita/" + berita.foto
 
@@ -49,8 +56,9 @@ class BeritaPagerAdapter(
             addHeader("X-App-Signature", DeviceSecurityHelper.getAppSignatureHash(context))
         }
 
-        // 🔔 KIRIM DATA KE ACTIVITY (SAAT ITEM DIBUAT)
-        listener.onBeritaChanged(berita)
+        // ⚠️ JANGAN panggil listener.onBeritaChanged di sini karena instantiateItem 
+        // dipanggil untuk halaman yang belum terlihat (offscreen). 
+        // Biarkan Activity yang menangani via onPageSelected.
 
         container.addView(view)
         return view

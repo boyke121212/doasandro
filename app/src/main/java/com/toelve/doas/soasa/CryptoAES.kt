@@ -2,6 +2,7 @@ package com.toelve.doas.soasa
 
 
 import android.util.Base64
+import android.util.Log
 import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.Mac
@@ -31,28 +32,39 @@ object CryptoAES {
         encryptedBase64: String,
         aesKeyHex: String
     ): String {
+        if (encryptedBase64.isEmpty() || encryptedBase64 == "null") return ""
 
-        val allBytes = Base64.decode(encryptedBase64, Base64.DEFAULT)
+        return try {
+            val allBytes = Base64.decode(encryptedBase64, Base64.DEFAULT)
 
-        // 16 byte pertama = IV
-        val iv = allBytes.copyOfRange(0, 16)
+            if (allBytes.size < 16) {
+                Log.e("DOS_ERROR", "Data too short for decryption: $encryptedBase64")
+                return encryptedBase64
+            }
 
-        // sisanya = cipher text
-        val cipherText = allBytes.copyOfRange(16, allBytes.size)
+            // 16 byte pertama = IV
+            val iv = allBytes.copyOfRange(0, 16)
 
-        val keyBytes = hexToBytes(aesKeyHex)
+            // sisanya = cipher text
+            val cipherText = allBytes.copyOfRange(16, allBytes.size)
 
-        val secretKey = SecretKeySpec(keyBytes, "AES")
-        val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
+            val keyBytes = hexToBytes(aesKeyHex)
 
-        cipher.init(
-            Cipher.DECRYPT_MODE,
-            secretKey,
-            IvParameterSpec(iv)
-        )
+            val secretKey = SecretKeySpec(keyBytes, "AES")
+            val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
 
-        val decrypted = cipher.doFinal(cipherText)
-        return String(decrypted, Charsets.UTF_8)
+            cipher.init(
+                Cipher.DECRYPT_MODE,
+                secretKey,
+                IvParameterSpec(iv)
+            )
+
+            val decrypted = cipher.doFinal(cipherText)
+            String(decrypted, Charsets.UTF_8)
+        } catch (e: Exception) {
+            Log.e("DOS_ERROR", "Decryption failed: ${e.message}")
+            encryptedBase64
+        }
     }
 
     /**
@@ -84,8 +96,9 @@ object CryptoAES {
      * HEX → BYTE ARRAY
      */
     private fun hexToBytes(hex: String): ByteArray {
-        require(hex.length == 64) {
-            "AES-256 key harus 64 hex char"
+        if (hex.length != 64) {
+            Log.e("DOS_ERROR", "Invalid AES key length: ${hex.length}")
+            return ByteArray(32) // Fallback or handle appropriately
         }
 
         val result = ByteArray(hex.length / 2)

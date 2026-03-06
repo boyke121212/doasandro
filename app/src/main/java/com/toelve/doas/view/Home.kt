@@ -8,7 +8,6 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.Entry
@@ -18,7 +17,6 @@ import com.toelve.doas.helper.BeritaPagerAdapter
 import com.toelve.doas.boyi.Boyke
 import com.toelve.doas.databinding.ActivityHomeBinding
 import com.toelve.doas.helper.Auto.cleanTempPhotos
-import com.toelve.doas.helper.RenderHtml.htmlPreviewClean
 import com.toelve.doas.helper.cekabsen
 import com.toelve.doas.helper.dos
 import com.toelve.doas.helper.go
@@ -75,7 +73,7 @@ class Home : Boyke(),
 
     override fun onBeritaChanged(berita: BeritaItem) {
         binding.tvJudul.text = berita.judul
-        binding.tvIsi.text = htmlPreviewClean(berita.isi, 20)
+        binding.tvIsi.text = berita.isi
     }
 
     private fun monitorInternet() {

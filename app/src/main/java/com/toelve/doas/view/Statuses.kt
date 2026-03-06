@@ -12,7 +12,6 @@ import com.toelve.doas.helper.Auto.autoSlide
 import com.toelve.doas.helper.Auto.renderAbsensi
 import com.toelve.doas.helper.Auto.resetView
 import com.toelve.doas.helper.BeritaPagerAdapter
-import com.toelve.doas.helper.RenderHtml.htmlPreviewClean
 import com.toelve.doas.soasa.CryptoAES
 
 class Statuses : Boyke(),
@@ -106,9 +105,7 @@ class Statuses : Boyke(),
                                         )
                                     )
                                 }
-                            } else {
                             }
-                        } else {
                         }
 
                         val viewPager = binding.pager
@@ -122,13 +119,15 @@ class Statuses : Boyke(),
                             viewPager.adapter = adapter
 
                             // SET AWAL
-                            onBeritaChanged(listBerita[0])
+                            if (adapter.items.isNotEmpty()) {
+                                onBeritaChanged(adapter.items[0])
+                            }
 
                             // UPDATE SAAT SWIPE
                             viewPager.addOnPageChangeListener(object :
                                 ViewPager.SimpleOnPageChangeListener() {
                                 override fun onPageSelected(position: Int) {
-                                    onBeritaChanged(listBerita[position])
+                                    onBeritaChanged(adapter.items[position])
                                 }
                             })
 
@@ -174,7 +173,7 @@ class Statuses : Boyke(),
 
     override fun onBeritaChanged(berita: BeritaItem) {
         binding.tvJudul.text = berita.judul
-        binding.tvIsi.text = htmlPreviewClean(berita.isi, 20)
+        binding.tvIsi.text = berita.isi
     }
 
 }

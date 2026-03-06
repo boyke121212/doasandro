@@ -4,14 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.addCallback
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
-import com.toelve.doas.R
 import com.toelve.doas.boyi.Boyke
 import com.toelve.doas.databinding.ActivityBeritaBinding
 import com.toelve.doas.helper.AuthManager
@@ -32,8 +27,6 @@ class Berita : Boyke(),
     var isLoading = false
     var isLastPage = false
 
-    private var userScrolled = false
-    private var lastLoadTime = 0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityBeritaBinding.inflate(layoutInflater)
@@ -209,9 +202,7 @@ class Berita : Boyke(),
                                         )
                                     )
                                 }
-                            } else {
                             }
-                        } else {
                         }
 
                         val viewPager = binding.pager
@@ -220,17 +211,19 @@ class Berita : Boyke(),
                             val adapter = BeritaPagerAdapter(
                                 context = this,
                                 items = listBerita,
-                                listener = this // 🔥 PASANG LISTENER
+                                listener = this
                             )
                             viewPager.adapter = adapter
 
                             // SET AWAL
-                            onBeritaChanged(listBerita[0])
+                            if (adapter.items.isNotEmpty()) {
+                                onBeritaChanged(adapter.items[0])
+                            }
 
                             // UPDATE SAAT SWIPE
                             viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
                                 override fun onPageSelected(position: Int) {
-                                    onBeritaChanged(listBerita[position])
+                                    onBeritaChanged(adapter.items[position])
                                 }
                             })
 
@@ -275,7 +268,8 @@ class Berita : Boyke(),
     }
 
     override fun onBeritaChanged(berita: BeritaItem) {
-        binding.tvJudul.text = berita.judul
+        // ✅ Paksa bersihkan di sini
+        binding.tvJudul.text = htmlPreviewClean(berita.judul, 50)
         binding.tvIsi.text = htmlPreviewClean(berita.isi, 20)
     }
 }

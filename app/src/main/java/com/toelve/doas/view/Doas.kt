@@ -67,13 +67,8 @@ class Doas : Boyke(),
                                         )
                                     )
                                 }
-                            } else {
                             }
-                        } else {
                         }
-
-
-
 
                         val viewPager = binding.pager
 
@@ -81,17 +76,19 @@ class Doas : Boyke(),
                             val adapter = BeritaPagerAdapter(
                                 context = this,
                                 items = listBerita,
-                                listener = this // 🔥 PASANG LISTENER
+                                listener = this
                             )
                             viewPager.adapter = adapter
 
                             // SET AWAL
-                            onBeritaChanged(listBerita[0])
+                            if (adapter.items.isNotEmpty()) {
+                                onBeritaChanged(adapter.items[0])
+                            }
 
                             // UPDATE SAAT SWIPE
                             viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
                                 override fun onPageSelected(position: Int) {
-                                    onBeritaChanged(listBerita[position])
+                                    onBeritaChanged(adapter.items[position])
                                 }
                             })
 
@@ -101,7 +98,7 @@ class Doas : Boyke(),
                         val judul = CryptoAES.decrypt(json.getString("judul"), aesKey)
                         val isi =CryptoAES.decrypt(json.getString("isi"), aesKey)
                         val pdf =CryptoAES.decrypt(json.getString("pdf"), aesKey)
-                        binding.tvAtas.text = judul
+                        binding.tvAtas.text = htmlPreviewClean(judul, 50)
                         binding.tvDoas.text = htmlPreviewClean(isi, 2000)
                         binding.btDownload.setOnClickListener {
                             val token = SecurePrefs.get(this@Doas).getAccessToken()
@@ -166,7 +163,8 @@ class Doas : Boyke(),
     }
 
     override fun onBeritaChanged(berita: BeritaItem) {
-        binding.tvJudul.text = berita.judul
+        // ✅ Paksa bersihkan di sini untuk memastikan tidak ada tag yang lolos
+        binding.tvJudul.text = htmlPreviewClean(berita.judul, 50)
         binding.tvIsi.text = htmlPreviewClean(berita.isi, 20)
     }
 }

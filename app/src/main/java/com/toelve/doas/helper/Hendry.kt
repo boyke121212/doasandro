@@ -82,11 +82,13 @@ fun Home.dos(binding: ActivityHomeBinding) {
                         )
                         viewPager.adapter = adapter
 
-                        onBeritaChanged(listBerita[0])
+                        if (adapter.items.isNotEmpty()) {
+                            onBeritaChanged(adapter.items[0])
+                        }
 
                         viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
                             override fun onPageSelected(position: Int) {
-                                onBeritaChanged(listBerita[position])
+                                onBeritaChanged(adapter.items[position])
                             }
                         })
 
