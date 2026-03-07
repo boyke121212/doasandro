@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:isScrollContainer="true"
         app:layout_constraintBottom_toTopOf="@id/tvDisclaimer"
         app:layout_constraintTop_toBottomOf="@id/btnBack">
 

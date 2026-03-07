@@ -29,8 +29,8 @@ class Home : Boyke(),
     BeritaPagerAdapter.OnBeritaChangeListener {
     lateinit var binding: ActivityHomeBinding
     lateinit var d: Dialog
-    private lateinit var connectivityManager: ConnectivityManager
-    private lateinit var networkCallback: ConnectivityManager.NetworkCallback
+    private var connectivityManager: ConnectivityManager? = null
+    private var networkCallback: ConnectivityManager.NetworkCallback? = null
     var isRequestRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +39,7 @@ class Home : Boyke(),
         setContentView(binding.root)
         setupDoubleBackExit()
         binding.btHadir.setOnClickListener { go(binding) }
+        
         monitorInternet()
         
         val mapAbsen = mapOf(
@@ -85,26 +86,42 @@ class Home : Boyke(),
         networkCallback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 runOnUiThread {
-                    refreshData()
+                    // Hanya refresh jika tidak sedang berjalan
+                    if (!isRequestRunning) {
+                        refreshData()
+                    }
                 }
             }
         }
-        connectivityManager.registerNetworkCallback(request, networkCallback)
+        connectivityManager?.registerNetworkCallback(request, networkCallback!!)
     }
 
     override fun onResume() {
         super.onResume()
+        // Reset flag saat resume untuk memastikan bisa request lagi
+        isRequestRunning = false 
         refreshData()
         cleanTempPhotos(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        connectivityManager.unregisterNetworkCallback(networkCallback)
+        try {
+            networkCallback?.let { connectivityManager?.unregisterNetworkCallback(it) }
+        } catch (e: Exception) {}
     }
 
     fun refreshData() {
         if (isRequestRunning) return
+        
+        // Tambahkan pengaman: Jika dalam 20 detik masih loading, reset flag
+        binding.root.postDelayed({
+            if (isRequestRunning) {
+                isRequestRunning = false
+                hideLoading()
+            }
+        }, 20000)
+
         isRequestRunning = true
         dos(binding)
     }

@@ -10,6 +10,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.toelve.doas.boyi.Boyke
 import com.toelve.doas.databinding.ActivityAbsenHadirBinding
 import com.toelve.doas.helper.AbsensiManager
@@ -44,6 +47,13 @@ class AbsenHadir : Boyke() {
         super.onCreate(savedInstanceState)
         binding = ActivityAbsenHadirBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Fix for keyboard covering EditText due to DecorFitsSystemWindows(false) in Boyke
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime())
+            view.updatePadding(bottom = insets.bottom)
+            windowInsets
+        }
 
         absensiManager = AbsensiManager(
             activity = this,
@@ -148,9 +158,6 @@ class AbsenHadir : Boyke() {
         img.scaleType = ImageView.ScaleType.CENTER_CROP
         img.setImageURI(uri)
         
-        // Add rounded corners programmatically or via background if needed, 
-        // but for simplicity we use scale type.
-
         img.setOnClickListener {
             val intent = Intent(this, PreviewFotoActivity::class.java)
             intent.putExtra("foto_uri", uri.toString())
